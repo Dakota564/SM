@@ -1,0 +1,73 @@
+The concept of the Wigner distribution could be consider as
+Fourier transform of instantaneous autocorrelation function [1]: 
+
+the Fourier transform of this windowed signal is calculated to obtain the
+energy distribution along the frequency direction at the time
+corresponding to the centre of the window. 
+
+This inherent relationship between time and frequency resolution becomes
+more important when one is dealing with signals whose
+frequency content is changing rapidly. 
+
+However, in many applications this may be difficult, or even impossible(to have fixed windows (STFT)), especially
+when the characteristics of the signal change rapidly as a function of time.
+In such cases, it is necessary to find an appropriate time dependent window. A simple way
+to achieve this is to use the signal itself as the window and consider the transform
+S(t, ω) = ∞ −∞ s(τ)s∗(t − τ) exp(−iωτ)dτ
+
+Wigner-Ville transform
+is that it is the Fourier transform of the signal after it has been windowed with the reverse of itself.
+The transform provides a time-frequency distribution that, in general, yields excellent time and
+frequency resolution together with other valuable properties. However, it also yields
+some undesirable outputs such as aliasing and cross-term interference.
+
+For signals with spectral content that changes over time, 
+the quadratic time-frequency analysis methods compute the energy of a signal as a function of time and frequency,
+resulting in a quadratic time-frequency representation of the signal. 
+the time-frequency representation is called a distribution or a spectrogram.
+Because a quadratic time-frequency representation approximately describes the energy density of a signal in the time-frequency domain,
+
+The high resolutions in
+time and frequency domains are hardly obtained simultaneously for the STFT and the WT analysis
+methods. 
+The WVD method is more effective in the single-component LFM signal analysis
+due to its excellent energy localization and noninterfering time and frequency resolution.
+However, a cross-term appears in the multi-component LFM signal analysis [5].
+The pseudo WVD method and the smooth pseudo WVD method have been presented to reduce the interference terms
+through the kernel function or the window function at the expense of resolution degradation
+
+
+
+The FH signals can be seen as multiple frequency-shift keying (MFSK) signals whose carrier frequency changes regularly because its carrier frequency controlled by the pseudo-noise (PN) code hops continuously and randomly
+
+The time-frequency analysis based on the combination of time domain analysis and frequency domain analysis
+is an efficient way to analyze the FH signal as it can get the time-frequency distribution to describe the joint time-frequency characteristics of the signal.
+
+Wigner-Ville est l'outil central des analyses temps-fréquence bilinéaires
+
+WVD (Weigner- Ville distribution ) is a great tool that provides excellent localisation in time and frequency , unlike short time Fourier transform, which can provide localisation in either time or frequency , not both simultaneously.
+
+Because of its many theoretical properties [16], the Wigner–Ville distribution
+(WVD) could be thought of as the most appropriate tool. Nevertheless, the
+overall readability is hampered by cross-components interference phenomena
+
+However, if you have signals with several frequency components,the WVD suffers from the so called cross terms. 
+These cross terms can be (partly) supressed by extending the WVD - this results in the so called smoothed pseudo WVD (SPWVD).
+Hence, for most pracitcal applications you would (and should) use the SPWVD.
+There are good papers from Boualem Boashash and a nice book from Leon Cohen (Time frequency analysis) which cover this topic.
+
+By definition, theWVD does present the advantage of depending only on the signal.
+Its role is central in TF analysis and it possesses a number of theoretical properties
+[12, 16] among which one can mention its ability to be PERFECTLY LOCALIZED in the case
+of linear FM signals. These appealing features have, however, to be paid at some
+price because, for example, a WVD cannot be positive everywhere, thus forbidding a
+local density interpretation. Furthermore, in accordance with the elementary identity
+(a+b)2 = a2 +b2 + 2ab, the fully quadratic nature of the WVD is known to create
+spurious cross terms, characterized by oscillating contributions located midway in
+between any two interacting components
+
+There is a compromise between Localization and interference
+
+Wiegner Ville Distribution :
+
+It's a Time-Frequency Distribution that describes non-stationnary signals by displaying the energy density over time and frequency simultaneously 

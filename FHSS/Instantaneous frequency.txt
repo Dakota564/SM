@@ -1,0 +1,5 @@
+The instantaneous frequency (IF) is a basic parameter which may be used to describe the nonstationarity in a process 
+it is based on the analytic signal 
+
+Another interpretation of the IF uses a time-frequency distribution (TFD) and defines
+the IF as the weighted average of the frequencies existing in the signal at time t

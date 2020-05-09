@@ -1,0 +1,42 @@
+The values of the TFR surface above the time-frequency plane give an indication as to
+which spectral components are present at which times.
+Time Frequency Representations TFRs have been applied to analyze, modify and synthesize non-stationary or time-varying signals. 
+TFRs have also been used for efficient coding of signals (e.g., subband coding) 
+and as a statistic for signal detection and parameter estimation.
+
+Time-scale representations are characterized by a variable resolution in the time-frequency domain,
+where the frequency is the inverse of the scale unit. Two time-scale transform have been
+considered: - scalogram...
+
+
+By definition, the wavelet transform is more a time-scale than a time-frequency representation.
+
+However, for wavelets which are well localized around a non-zero frequency 𝜈𝜈0 at a scale = 1 , a time-frequency
+interpretation is possible thanks to the formal identification 𝜈 = 𝜈0/a
+
+
+There are different categories of wavelets, orthogonal wavelets, non-orthogonal,
+and biorthogonal wavelets. 
+The Daubechies family, Symmlet, Coiflet, and Meyer wavelets are examples of orthogonal wavelets,
+while the Morlet wavelet is an example of a non-orthogonal wavelet.
+As mentioned earlier, not all applications of signal expansions require perfect reconstruction.
+Applications such as signal identification and classification are examples of this type.
+Therefore, unless the orthogonality is required to meet another criteria, we can exploit non-orthogonal wavelet transforms.
+
+
+
+
+the wavelet coefficients combine information about both the signal and the wavelet.
+
+Edge detection is an important problem in
+numerous applications ranging from image processing to
+transient detection, and wavelet transforms have been used
+exqensively for detecting discontinuities in a given signal or
+its derivatives. Recall that wavelets may be used to detect
+discontinuities in a signal or its derivatives, if the chosen
+wavelet function is able to represent the highest order
+derivative present in the signal function, as any wavelet
+with, at least p vanishing moments, can be used to detect a
+discontinuity in the @- 1)“ derivative [7]. For our problem,
+we are interested in identifying pulse edges, i.e., a signal
+discontinuity, ‘and the Idax wavelet is sufficient for the task. 

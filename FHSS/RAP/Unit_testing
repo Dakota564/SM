@@ -1,0 +1,21 @@
+Unit testing 
+
+why?
+
+Software can have bugs and the unit testing catches the bugs before they get to the field
+Pour cela, on a besoin de plusieurs couches de test afin de repérer les éventuels bugs : 
+
+Le niveau le plus bas - Unit testing : Testing at the function level.
+- Component Testing : Testing is at the library and compiled binary level testing external interfaces of these components
+- System Testing : Test the external interfaces of a system which is a collection of sub-systems
+- Performance Testing : Testing done at sub-system and system levels to verify timing and resource usages are acceptable
+
+Unit test testing individual functions in the code 
+Each test case for the function should have a corresponding unit test
+Groups of unit test can be combined into test suites, which can help with organizing the tests
+Execution of the tests should be automated 
+
+Un test unitaire comporte trois étapes :
+- L'étape de configuration, où il crée la chaîne de test (Setup)
+- L'étape d'action, où elle appelle le code de production pour effectuer l'action qui est testée  (Action)
+- L'étape d'affirmation, où le test valide les résultats de l'action (Assertion)

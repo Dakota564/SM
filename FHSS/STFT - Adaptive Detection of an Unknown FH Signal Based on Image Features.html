@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://sci-hub.tw/https://ieeexplore.ieee.org/document/5301814 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Sci-Hub | Adaptive Detection of an Unknown FH Signal Based on Image Features. 2009 5th International Conference on Wireless Communications, Networking and Mobile Computing | 10.1109/WICOM.2009.5301814</title>
+        
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" async="" src="./STFT - Adaptive Detection of an Unknown FH Signal Based on Image Features_files/watch.js.download"></script><script src="./STFT - Adaptive Detection of an Unknown FH Signal Based on Image Features_files/jquery-3.3.1.min.js.download"></script><script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script>
+    </head>
+    <body>
+    <script type="text/javascript">
+        function clip(element)
+        {
+          var $temp = $("<input>");
+          $("body").append($temp);
+          $temp.val($(element).text()).select();
+          document.execCommand("copy");
+          $temp.remove();
+        }
+        
+        $(document).ready(function() {
+            
+            var doi = '10.1109/WICOM.2009.5301814';
+            
+            if (doi.substr(0, 7) == '10.0000')
+            {
+                document.getElementById('reload').style.display = 'none';
+                
+                if (doi.indexOf('generic') > -1)
+                    document.getElementById('link').style.display = 'none';
+            }
+            
+            else if( $('#citation').text() == ' ')
+                $("#citation").load('//sci-hub.tw/cite/10.1109/WICOM.2009.5301814');
+            
+        });
+    </script>
+    <style type="text/css">
+        
+        html, body {height: 100%; width:100%; margin: 0; overflow:hidden}
+        div {font-family: -apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif}
+
+        #menu {width: 370px; height: 100%; position: fixed; z-index: 1;  top: 0;  left: 0; background-color: white;  overflow-x: hidden}
+
+        #header {cursor:pointer}
+	#logo {background:url('//sci-hub.tw/misc/img/ravenround.gif') no-repeat;width: 165px;height:157px;margin-left:18px}
+	#sci {background:#bbb;color:white;margin: 50px 0 0 10px; padding:5px 20px 5px 25px;font-size:38px}
+	#sci:hover {background:#B22222}
+	#motto {color:#999; margin: 18px 0 0 24px;font-size: 18px}
+
+	#buttons {margin-top: 55px; width: 100%; font-size: 22px}
+	#buttons a {color:#999; text-decoration:none}
+	#buttons a:hover {color:#999}
+	#buttons ul {margin: 0; padding: 0; margin-left: 12px}
+	#buttons ul li {display: inline; margin-left: 6px; padding: 12px}
+	#buttons ul li:hover {border: solid 1px #999; border-radius: 8px}
+
+	#citation {margin: 48px 25px 0 25px; font-size: 16px; cursor: pointer}
+        #citation:active {color:#aaa}
+	#citation a {color:#666;text-decoration:none}
+	#citation a:hover {text-decoration:underline}
+
+	#description {margin: 25px 0 0 0; text-align: center; font-size: 16px; width: 100%; padding: 12px 24px 12px 0}
+	#description a {color: green; text-decoration: none}
+
+	#link {margin: 12px 0 0 25px; font-size: 16px; color:#aaa}
+	#link a {color: #aaa; text-decoration: underline}
+        
+	#versions {margin: 18px 0 0 25px; font-size: 12px; color:#aaa}
+	#versions a {color: black; text-decoration: none}
+	#versions a:hover {text-decoration: underline}
+        
+	#social {margin: 25px; text-align: center; font-size: 16px; color:#aaa}
+	#social a {color: #333; text-decoration:none}
+	#social a:hover {color: #B22222}
+
+	#creator {margin: 25px; text-align: center; font-size: 16px; color: #aaa}
+	#creator a {color: #333; text-decoration:none}
+	#creator a:hover {color: #B22222}
+
+        #article {margin-left: 390px; height:100%}
+        iframe {width:100%;height:100%}
+
+	td {vertical-align:top}
+        
+        
+    </style>
+    
+    <div id="menu">
+	<table onclick="window.open(&#39;//sci-hub.tw/&#39;)"><tbody><tr>
+        <td><div id="logo"></div></td>
+	<td>
+            <div id="sci"><nobr>sci-hub</nobr></div>
+            <div id="motto">to open science</div>
+        </td>
+	</tr></tbody></table>
+
+	<div id="buttons">
+
+            <ul>
+	    <!--    <li id = "reload"><a target = "_blank" href = "//sci-hub.tw/reload/10.1109/WICOM.2009.5301814">↻ reload</a></li>-->
+	        <li><a href="https://sci-hub.tw/https://ieeexplore.ieee.org/document/5301814#" onclick="location.href=&#39;https://dacemirror.sci-hub.tw/proceedings-article/eaf1c9804c162bf8fc88953ee152ab7e/luo2009.pdf?download=true&#39;">⇣ save</a></li>
+            </ul>
+
+	</div>
+
+	<div id="citation" onclick="clip(this)">Luo, S., &amp; Luo, L. (2009). <i>Adaptive Detection of an Unknown FH Signal Based on Image Features. 2009 5th International Conference on Wireless Communications, Networking and Mobile Computing.</i> doi:10.1109/wicom.2009.5301814&nbsp;</div>
+
+        <div id="link">
+            url to share this paper:<br>
+            <a href="https://sci-hub.tw/10.1109/WICOM.2009.5301814"><nobr>sci-hub.tw/10.1109/WICOM.2009.5301814</nobr></a>
+        </div>
+        
+        <div id="versions">
+                    </div>
+        
+	<div id="description" onclick="window.open(&#39;//sci-hub.tw/support&#39;)">
+        Sci-Hub is a project<br>to make knowledge free.<br><a target="_blank" href="https://sci-hub.si/support">support →</a>
+	</div>
+
+        <div id="social">
+            updates on <a target="_blank" href="https://twitter.com/Sci_Hub">twitter</a>
+        </div>
+
+        <div id="creator">
+            created by <a target="_blank" href="https://engineuring.wordpress.com/">Alexandra Elbakyan</a>
+        </div>
+
+    </div>
+
+    <div id="article">
+        <iframe src="./STFT - Adaptive Detection of an Unknown FH Signal Based on Image Features_files/luo2009.html" id="pdf"></iframe>
+    </div>
+    
+<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter10183018 = new Ya.Metrika({ id:10183018, clickmap:true, trackLinks:true, accurateTrackBounce:true, ut:"noindex" }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/10183018?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+    
+
+</body></html>

@@ -1,0 +1,11 @@
+RRC:
+
+Dans les systèmes de communications
+In communications systems, two important requirements of a wireless communications channel demand the use of a pulse shaping filter. 
+These requirements are: 
+- generating bandlimited channels
+- reducing inter symbol interference (ISI) from multi-path signal reflections.
+
+
+
+Nyquist bandwidth B=1/2T is the minimum bandwidth for zero ISI

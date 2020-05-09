@@ -1,0 +1,6 @@
+rier frequency is changed according to the pattern determined by the code sequence.
+In the FFH technique, the hop frequency is equal to fH = 1/TH. In the case of non-coherent
+detection, to ensure the required orthogonality between the tones of the FSK modulation signal, a
+minimum distance between them being a mult
+
+Since spectral properties are frequently better displayed on a logarithmic frequency scale, it is customary to use a = 2-u

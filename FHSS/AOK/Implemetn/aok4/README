@@ -1,0 +1,55 @@
+
+
+              BASIC INFORMATION:    AOK4.C
+				    Released February 1996
+
+
+
+INSTALLATION: 
+To install this distribution see INSTALL.
+
+
+USER'S GUIDE:
+For more information on running the program, see aok4.GUIDE
+
+
+SOURCE:
+WWW: http://www-dsp.rice.edu/software/TFA/AOK/
+
+Associated references can be obtained from 
+http://www-dsp.rice.edu/publications/
+
+
+EMAIL: 
+Send bug reports and questions to richb@rice.edu
+
+
+CONDITIONS FOR USE:
+
+This software is Copyright (C) University of Illinois and Rice
+University 1992, 1993, 1994, 1995, 1996.
+
+You have the right to use, free of charge, with the following terms
+and conditions:
+
+      (1) You can redistribute this software in source form.  If you
+          redistribute this software in compiled form you will include
+          the source code.
+      (2) You can distribute your own applications that link this software
+          if you include the source code for this software.
+      (3) You own full rights to any output files you generate with this
+          software.
+      (4) You can make modifications to this software and use it for
+          in-house use only.  Under no circumstances can modified software
+          be redistributed.
+      (5) If you make any modifications to this software you will send
+          the changes by email to richb@rice.edu
+      (6) The DSP groups at the University of Illinois and Rice University 
+	  shall be credited should this software be used in in any form 
+          or written about in any publication.
+      (7) This software is provided "as is", without warranty by the 
+	  University of Illinois or Rice University.  In no event shall 
+	  the University of Illinois or Rice University be liable for any 
+	  loss or for any indirect, special, punitive, exemplary, 
+	  incidental, or consequential damages arising from the use, 
+	  possession or performance of this software.

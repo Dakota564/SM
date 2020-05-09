@@ -1,0 +1,35 @@
+Our goal is to exploit the wavelet transform of the ICF surface in order to identify FH modulation schemes.
+The wavelet transform results in a set of wavelet surfaces, one for each scale.
+
+Over this dyadic grid the spectral response contains some regions of low response
+due to the narrow bandwidth of the Morlet waveletfilters.
+In many applications, discrete-scale wavelets are preferred.
+Note that, the scale grid needs to be sampled linearly (i.e., s = 1, 2,3,4, ... ) or the roll-off factor of Equation V.l has to be
+decreased when applying Morlet wavelets for full spectral coverage.
+
+The CWT has increased significantly in popularity for resolving signals of great complexities
+due to its improved time-frequency localization properties compared with its near cousin, the
+very poorly resolved (in both time and frequency) discrete wavelet transform with its lack
+of translational invariance and even the commonly used, more traditional short-time Fourier
+transform (STFT), with its fixed temporal window
+
+
+
+
+The main goal of the wavelet transform is to decompose an arbitrary signal into elementary
+contributions which are labeled by a scale parameter a
+
+In particular, it has been shown that there exists an important difference between these two representations, at the level of discretization.
+Indeed, while it is convenient to sample uniformly the time and
+frequency parameters in the Gabor case, the time and scale parameters have to be sampled
+on a dyadic lattice in the wavelet case. 
+This is actually the consequence of a strategic difference: 
+Gabor functions perform an analysis with constant absolute bandwidth ∆ν, while wavelets perform an analysis with constant relative bandwidth ∆ν/ν (mu)
+
+
+Indeed, while it is convenient to sample uniformly the time and
+frequency parameters in the Gabor case, the time and scale parameters have to be sampled
+on a dyadic lattice in the wavelet case
+
+The factor √a is for energy normalization across the different scales.
+Through WT, the information of the time series X(t) is projected on the two-dimension space (scale a and translation τ).

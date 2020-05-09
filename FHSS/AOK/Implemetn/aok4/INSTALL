@@ -1,0 +1,32 @@
+
+
+              INSTALLATION INSTRUCTIONS:    AOK4.C
+
+
+To install aok4.c and its test and information files, de-tar the 
+file aok4.tar.Z you downloaded using:
+
+		   uncompress aok4.tar.Z
+                   tar -xvf aok4.tar
+
+
+This will create the directory aok4 containing the following files:
+
+	INSTALL         aok4.GUIDE      chirp.sig
+	README          aok4.c          papertest.sig
+
+
+aok4.c is written in the C language, and should compile immediately 
+on most platforms.  Compile using:
+
+	           cc aok4.c -lm -O4 -o aok
+
+
+This will create the executable file ``aok'' that you can install in
+the usual place.
+
+
+						    Richard Baraniuk
+					            richb@rice.edu
+					            January 29, 1996
+

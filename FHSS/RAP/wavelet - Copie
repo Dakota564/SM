@@ -1,0 +1,21 @@
+The FH signals can be seen as multiple frequency-shift keying (MFSK) signals whose carrier frequency changes regularly because its carrier frequency controlled by the pseudo-noise (PN) code hops continuously and randomly
+
+The time-frequency analysis based on the combination of time domain analysis and frequency domain analysis
+is an efficient way to analyze the FH signal as it can get the time-frequency distribution to describe the joint time-frequency characteristics of the signal.
+
+
+By definition, theWVD does present the advantage of depending only on the signal.
+Its role is central in TF analysis and it possesses a number of theoretical properties
+[12, 16] among which one can mention its ability to be PERFECTLY LOCALIZED in the case
+of linear FM signals. These appealing features have, however, to be paid at some
+price because, for example, a WVD cannot be positive everywhere, thus forbidding a
+local density interpretation. Furthermore, in accordance with the elementary identity
+(a+b)2 = a2 +b2 + 2ab, the fully quadratic nature of the WVD is known to create
+spurious cross terms, characterized by oscillating contributions located midway in
+between any two interacting components
+
+There is a compromise between Localization and interference
+
+Wiegner Ville Distribution :
+
+It's a Time-Frequency Distribution that describes non-stationnary signals by displaying the energy density over time and frequency simultaneously 

@@ -1,0 +1,283 @@
+
+
+	ADAPTIVE OPTIMAL-KERNEL (AOK) 
+        TIME-FREQUENCY REPRESENTATION
+
+		          Version 4.0
+
+
+	Douglas L. Jones 
+		Coordinated Science Lab
+		University of Illinois
+		1308 West Main Street
+		Urbana, IL 61801
+	
+		Tel:	(217) 244-6823
+		Fax:	(217) 244-1642
+		Email:	jones@uicsl.csl.uiuc.edu
+
+	Richard G. Baraniuk
+		Department of Electrical and 
+		   Computer Engineering
+		Rice University
+		P.O. Box 1892
+  		Houston, TX 77251-1892 USA
+
+		Tel:  	(713) 527-4020
+		Fax:  	(713) 524-5237
+		Email:	richb@rice.edu
+                URL:    http://www-dsp.rice.edu/
+
+
+
+This document briefly describes how to compile and run version 4.0 of
+the program ``aok'', which implements the adaptive optimal-kernel
+(AOK) time-frequency representation algorithm described in the paper:
+
+   ``An Adaptive Optimal-Kernel Time-Frequency Representation,''
+   by D. L. Jones and R. G. Baraniuk, IEEE Transactions on Signal 
+   Processing, Vol. 43, No. 10, pp. 2361--2371, October 1995.
+
+The program is written in the C language (for speed) and produces an
+ASCII output that is readily read into Matlab for display.  For more
+details on the specifics of the algorithm, please refer to this paper
+--- preprints are available from either author or from the Rice DSP
+WWW homepage at http://www-dsp.rice.edu.
+
+
+
+1. COMPILING AOKn.C
+   ----------------
+
+aok4.c is written in the C language, and should compile immediately on
+most platforms.  Compile using:
+
+	cc aok4.c -lm -O4 -o aok
+
+This will create the executable file ``aok''.
+
+
+
+2. USING AOK
+   ---------
+
+aok is very simple to use.  When prompted, simply enter the following
+data:
+
+Name of input file?	
+
+	- the name of the file containing the signal that you wish to
+	  analyze.
+	- the data should be in ASCII format, in two columns, as COMPLEX 
+	  numbers (that is, with both real and imaginary parts) with the
+	  real part in the leftmost column and the imaginary part in the 
+	  rightmost column, and with each new sample on a new line, like 
+	  so:
+
+		1.234 	0.123		- first sample real and imag part
+		4.1234	5.1235		- second sample real and imag part
+		0.0	10e-5		- third sample real and imag part
+		...
+
+	- if REAL data is to be analyzed, care must be taken to place
+	  zeros in the imaginary column, like so:
+
+		1.234	0.00
+		4.1234	0.00
+		0.0	0.00
+
+	  Otherwise, erroneous output will result.  (!)
+	- there is *no* need to "double oversample" the signal as with 
+	  many other TFR programs, because special anti-aliasing protection
+	  has been provided.
+
+Name of output file?
+
+	- the name of the output file that will contain the adaptive 
+	  optimal-kernel time-frequency distribution (AOK TFR).  
+	- the TFR is saved in ASCII format that is readable by Matlab.
+	  To load a TFR saved in file foo.dat with Matlab version 3, 
+	  simply use the command
+
+		load foo.dat
+	  
+	  With matlab version 4, use the command
+
+		load foo.dat -ascii 
+
+	  Each line in the ascii file corresponds to a row of the TFR 
+	  matrix, which in turn corresponds to one time slice of the 
+	  transform.  Note that the name of the TFR is ``foo'' after 
+	  read-in.
+	- when read into Matlab, the TFR is arranged as follows:  the 
+	  row index is time, with increasing row index corresponding to
+	  increasing time, and the column index is frequency (between
+	  -pi and +pi rad/sec), with increasing column index corresponding 
+	  to increasing frequency.  
+	- note that there are more time rows in the TFR than samples in 
+	  the signal, to allow for any spreading that may occur from 
+	  selecting very long kernels in the time direction.
+	- while we have chosen to use an ASCII output for greater 
+	  compatibility across various computing platforms, this choice 
+	  also results in the data output portion of the program dominating 
+	  the total running time of aok.  Note, however, that the save 
+	  portion of aok4.c can easily be customized for other (faster!) 
+	  types of output formats.   (In fact, a C-Mex version for direct 
+	  interface with Matlab is planned.)
+
+Number of signal samples in input file?
+
+	- the number of signal samples in the data file.
+
+Length of sliding analysis window?  (power of two)
+  (Number of samples along each dimension of the STAF)
+
+   	- this value also corresponds to the length of the portion of the
+   	  signal that is windowed and viewed to compute each update of the
+  	  optimal kernel and slice of the adaptive optimal-kernel TFR.
+	- this number is equivalent to the number of samples along one 
+	  dimension of the short-time ambiguity function (STAF) that is 
+	  utilized to update the optimal kernel and compute a slice of the 
+	  adaptive optimal-kernel TFR.
+	- in general, the window length should be chosen as the minimum of a 
+	  number slightly larger (in samples) than the number of samples in 
+	  the longest-duration signal component which it is desired to 
+	  resolve, or the effective number of the maximum desired number of 
+	  independently resolvable frequency bins.
+	- the maximum allowable value is currently hardlimited to 256.  
+	  If your machine has plenty of memory, this value can easily be
+	  increased by changing the array size definitions in the program.
+
+Number of output frequency samples per time-slice?  (power of two)
+
+	- number of samples in the frequency direction that are computed
+	  for the optimal-kernel TFR at each time instant.
+	- the frequency output ranges from -0.5 to 0.5 cycles per sample
+	  (the full range available to a discrete-time signal).
+
+Time increment in samples between time-slice outputs?
+
+	- for very long signals, the optimal-kernel TFR can be decimated.
+	- input value is the decimation factor.
+	- for short signals, use the value 1.
+
+Normalized volume of optimal kernel?
+  (Typically between 1 and 5)
+
+	- this parameter controls the amount of smoothing in the optimal-
+	  kernel TFR, and hence, controls the cross-component suppression
+    	  versus auto-component smearing tradeoff.
+	- a value of 1 corresponds to the same amount of smoothing as a
+	  spectrogram (in many cases excessive).
+	- a value of above 5 or 10 gives essentially the pseudo Wigner
+	  distribution of the signal.
+	- typically we balance between these two extremes by selecting
+	  a kernel volume of between 2 and 4 (2.5 or 3 are both good 
+	  defaults).
+	- if the results of the optimal-kernel TFR are not satisfactory, 
+	  try again with a different volume:
+
+		Too many cross-components  =>  decrease the volume
+		Excessive smoothing        =>  increase the volume.
+
+
+
+3. TEST SIGNALS
+   ------------
+
+Two test signals are included with this distribution of the aok
+software.  The first, contained in the file ``chirp.sig'' is a simple
+chirp signal, whose instantaneous frequency rises with time. After
+starting aok, enter the following data to produce an adaptive TFR with
+64 frequency bins:
+
+Name of input file?
+chirp.sig
+Name of output file?
+chirp_aok.dat
+Number of signal samples in input file?
+64
+Length of sliding analysis window?  (power of two)
+  (Number of samples along each dimension of the STAF)
+64
+Number of output frequency samples per time-slice?  (power of two)
+64
+Time increment in samples between time-slice outputs?
+1
+Normalized volume of optimal kernel?
+  (Typically between 1 and 5)
+3
+
+Now, in Matlab version 4, enter the following to get a display of the adaptive 
+TFR of this chirp signal (``>>'' represents the Matlab prompt):
+
+>> load chirp_aok.dat -ascii
+
+*** Loads the matrix ``chirp_aok''
+
+>> whos
+              Name        Size       Elements     Bytes    Density   Complex
+
+          chirp_aok    130 by 64        8320     66560       Full      No 
+
+Grand total is 8320 elements using 66560 bytes
+
+*** To display the AOK TFR with the time axis horizontal and the 
+    frequency axis vertical, enter (in Matlab 4):
+
+>> contour(abs(flipud(chirp_aok')))
+
+*** Note also that the adaptive TFR is pre- and post-zeropadded by 
+    approximately Nstaf/2 samples, where Nstaf is the amount entered
+    when prompted ``No. of samples in STAF?''.
+
+
+
+The second signal is the test signal utilized in the paper mentioned
+in the Introduction.  The signal in file ``papertest.sig'' contains
+two closely-spaced impulses, two simultaneous sinusoids, a Gaussian
+pulse, two parallel chirps, and a final impulse (in 223 time points).
+Running aok as follows should result in a high resolution
+time-frequency image:
+
+Name of input file?
+papertest.sig
+Name of output file?
+papertest_aok.dat
+Number of signal samples in input file?
+223
+Length of the sliding analysis window?  (power of two)
+  (Number of samples along each dimension of the STAF)
+64
+Number of output frequency samples per time-slice?  (power of two)
+64
+Time increment in samples between time-slice outputs?
+1
+Normalized volume of optimal kernel?
+  (Typically between 1 and 5)
+1.5 
+
+
+
+4. CHANGES FROM RUNRGK3.c
+   ----------------------
+
+aok4.c is simply a renamed version of the program runrgk4.c.  The main
+change from runrgk3 to runrgk4 was an improvement in the iterative
+algorithm that solves for the optimal spread vector of the optimal
+radially Gaussian kernel.
+
+
+
+5. COMMENTS / QUESTIONS ?
+   ----------------------
+
+If you have any comments, suggestions, or questions, please do not hesitate 
+to contact either one of us.  Thanks for trying out the AOK TFR!
+
+	
+						- Rich and Doug
+ 		    				  November 15, 1992
+						  February  9, 1993
+						  January  29, 1996
+
