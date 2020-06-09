@@ -1,0 +1,32 @@
+Pour obtenir les caractéristiques des signaux non-stationnaires comportant un bruit blanc gaussien, une représentation temps-fréquence (RTF) quadratique est nécessaire. \\
+En général et plus particulièrement dans l'évasion de fréquence, la distribution de Wigner Ville (DWV) est la plus répandue pour une RTF quadratique due à son importante résolution en temps et en fréquence avec une complexité de $O(N^2log_2(N))$, $N$ étant le nombre d'échantillons. Cette résolution s'explique par le fait que cette distribution n'est plus soumise à l'incertitude d'Heisenberg.\\
+
+Dans le cas le plus général, la distribution de Wigner Ville, s'exprime par la transformée de Fourier en deux dimensions du produit de la fonction d'ambiguïté $A(n,k)$ et du noyau $C(p,b)$ : $$
+D(n,k) = \sum_{p=-N/2}^{N/2-1}\sum_{b=-N/2}^{N/2-1} C(p,b)A(p,b)e^{j(-bk-pn)2\pi /N}
+$$
+avec $$ A(p,b) = \sum_{n=0}^{N-1} s(n+b)s^*(n-b)e^{-j2\pi pn/N}$$
+et $C(p,b) = 1$, où  $n$ et $k$ sont des variables discrètes en temps et fréquence, sans oublier $p$ et $b$ désignant le décalage en temps et en fréquence. \\
+
+Cependant, l'inconvénient majeur lors d'utilisation de multi-components est la présence d'importants termes croisés (interférences).
+Celles-ci conduisent à une mauvaise interprétation des concentrations locales de puissance du signal et à une mauvaise identification de la signature temps-fréquence, y compris la fréquence instantanée.\\
+Pour résoudre ce problème de nombreuses versions filtrées de la DWV ont été élaborées, faisant toutes parties de la classe dite de Cohen.
+En général, cette classe utilise un noyau indépendamment du signal, ne permettant pas d'éliminer la totalité des interférences toute en conservant les termes souhaités. En effet, des signaux dont les termes croisés peuvent résider à proximité de l'origine du domaine d'ambiguïté. Or, le filtrage s'applique en enlevant les termes croisées ce situant aux extrémités du domaine d'ambiguïté, pour ne garder que les termes souhaités disposés au centre du domaine.  \\
+De nouvelles méthodes améliorées ont donc été proposées, appelées "noyaux adaptatifs" ou "noyaux dépendant du signal".
+Les noyaux adaptatifs éliminent presque toutes les interférences, obtenant ainsi les meilleures performances par rapport aux autres noyaux, qui sont quant à eux, fixes (noyaux non-dépendant du signal).\\
+Cette méthode est donc prometteuse pour obtenir une représentation temps-fréquence ayant une bonne résolution, permettant d'identifier au mieux le signal reçu.\\
+
+
+
+
+J'ai donc passer une grande partie de mon temps à trouver cette possibilité et à la comprendre, pour déterminer s'il y a une possibilité d'implémentation sans avoir besoin d'une trop grande capacité de calculs.\\
+
+
+
+
+
+\textbf{Polyphase filter banks} : \\
+J'ai décidé de ne pas poursuivre la piste des Polyphase filter banks, car elle me semble délicate à implémenter tout en ayant une complexité relativement importante sans résultats probants.\\
+
+\textbf{Transformée de Hilbert-Huang} :\\
+Cette transformée a une résolution temps-fréquence fine et ne possède pas de termes croisés. Elle repose essentiellement sur la décomposition empirique des modes en utilisant l'interpolation Spline. Cette décomposition va séparer les multi-components en components distincts appelés les fonctions du mode intrinsèque. \\
+Cependant cette piste est écartée car la méthode est sensible au bruit et nécessite un sur-échantillonnage pour obtenir une interpolation précise.\\

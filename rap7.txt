@@ -1,0 +1,53 @@
+La plupart des communications sans fil sont à bandes étroites. Cependant, le signal transmis peut être assujetti à du brouillage, des interférences et surtout il peut être intercepter.\\
+L'objectif de l'armée est double. En plus de vouloir augmenter la fiabilité en limitant les interférences, il est primordiale de rendre l'interception des communications la plus complexe possible. Ces objectifs peut être remplis en utilisant un système à étalement de spectre.\\
+
+Un signal à spectre étalé est un signal avec une modulation supplémentaire qui étend la largeur de bande du signal dépasse largement ce qui est requis par le canal sous-jacent code et modulation. Les systèmes de communication à spectre étalé sont utiles pour supprimer les interférences, rendre les communications sécurisées difficiles à détecter et en prenant en compte les canaux à évanouissement et à trajets multiples, et en offrant une capacité d'accès multiple. Les signaux à spectre étalé causent des interférences relativement mineures aux d'autres systèmes fonctionnant dans la même bande spectrale. Les deux types de système les plus utilisés sont ceux à séquence directe et à sauts de fréquence.
+
+L'objectif de ses deux système est d'étaler le spectre sur une bande de fréquence bien plus importante. \\
+
+\section{DSSS}
+L'étalement de spectre à séquence directe va combiner avec une opération OU exclusif (XOR) les données du signal directement avec une séquence générée pseudo-aléatoirement ayant une débit binaire bien supérieur. Ceci aura pour effet d'étaler le spectre du signal. Non seulement cela permet de réduire considérablement les problèmes d'interférences, mais aussi de faire passer ce signal comme du bruit lorsque que la séquence de nombres pseudo-aléatoires est inconnue du récepteur.
+
+\section{FHSS}
+Contrairement aux autres systèmes de communication, l'évasion de fréquences va transmettre un paquet à l'aide d'une multitude de canaux ayant pour chacun une fréquence différente, avec pour chaque canal adjacent une séparation de 1 MHz.\\
+Afin de générer les différentes fréquences par lesquelles le signal va être transmis, un synthétiseur de fréquence piloté par un générateur de séquences pseudo-aléatoires est nécessaire. \\
+
+
+Un des objectifs de ce stage consiste à la caractérisation de l'évasion de fréquence à l'aide d'une représentation du taux d'erreur binaire (BER) en fonction du rapport signal sur bruit (SNR). Pour ce faire, une chaîne de transmission doit être implémentée.\\
+
+
+Afin de finaliser la chaîne de transmission, il ne me restait plus qu'à obtenir des valeurs semblables entre l'entrée de la modulation à l'émission et la sortie de la démodulation en réception. \\
+D'après les résultats que j'obtenais, le problème devait ce situer au niveau du filtre de mise en forme RRC. \\
+Différentes méthodes déjà implémentées dans la Dspp ont été utilisées, sans résultats convaincant. J'ai donc décidé de garder la fonction permettant de calculer les coefficients du filtre, et d'implémenter la convolution entre le signal d'entrée et les coefficients. Bien que la démarche est correcte, le résultat quant à lui ne l'était toujours pas. \\
+En regardant plus en amont de la chaîne de transmission, il ne restait que la modulation. En regardant attentivement les résultats obtenues en sortie de ce bloc, on ce rends compte qu'un filtre de mise en forme est déjà appliqué; plus besoin d'en implémenter un.\\
+C'est donc après avoir enlevé le sur-échantillonnage, les deux filtres RRC et le bloc de décimation que j'ai obtenu des deux cotés de la chaîne des résultats comparables.\\
+
+
+\section{detection}
+Energy detector doesn't need prior information like match-filter [1], or cyclostationarity-based detectors\\
+the power spectral density (PSD) of white noise can be considered as constant over the whole frequency band that is sensed\\
+ In fact, in presence of a useful signal in the noise,
+the measured energy of the filtered received signal differs from
+the expected energy based on the assumption of white noise
+only. This allows us to decide if the signal is present in the
+band or not.\\
+
+Therefore, in absence of signal, it is possible to deduce
+in advance the energy of the noise after any filtering process
+downstream of the front-end, since the used filter is known\\
+
+La théorie de la détection binaire consiste à accepter ou rejeter l'hypothèse
+d'appartenance d'une observation â un espace donné.\\
+La détection d'un signal est généralement formulée en un problème de test binaire d'hypothèses : \\$$
+H_0 : r(t) = n(t)\\
+H_1 : r(t) = n(t) + s(t)
+$$ avec n(t) un bruit blanc gaussien centré de variance $\sigma^2$.\\
+
+
+Spectrogramme : module carrée de la transformée de Fourier à court terme 
+N
+The test statistic can be expressed as follows: $$
+r = \sum_{n=0}^{N-1}|x[n]|^2
+$$
+Soit une approche Bayesienne 
+Soit de Neyman-Pearson : Le seuil de détection de la distribution de probabilité est déterminé par la probabilité de fausse alarme (PFA) fixée.
